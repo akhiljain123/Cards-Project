@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+      }
+      #cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        height: 150px;
+        width: 200px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+        position: relative;
+      }
+      .card img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+      }
+      .card:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cards-container">
+      <!-- Cards will be generated here by JavaScript -->
+    </div>
+
+    <script>
+      // Define card details with images
+      const cardDetails = {
+        1: {
+          text: "",
+          image:
+            "https://assets.epicurious.com/photos/6455345838379779cdfad7c5/1:1/w_2240,c_limit/Rose%CC%81Vinaigrette_RECIPE_050323_53852.jpg",
+        },
+        2: {
+          text: "Classic Eggs Benedict With Blender Hollandaise",
+          image:
+            "https://assets.epicurious.com/photos/5900d6a4dd16ea535a7aed58/1:1/w_2580%2Cc_limit/Classic-Eggs-Benedict-26042017.jpg",
+        },
+        3: {
+          text: "Easy Coffee Cake",
+          image:
+            "https://assets.epicurious.com/photos/646fd1ec46df4526c7e6b42d/1:1/w_2580%2Cc_limit/coffee-cake_RECIPE_052423_16411_VOG_final.jpg",
+        },
+        4: {
+          text: "Coconut Rhubarb French Toast",
+          image:
+            "https://assets.epicurious.com/photos/6087173db284620dd0c49516/1:1/w_2580%2Cc_limit/CoconutRhubarbFrenchToast_RECIPE_042221_14190.jpg",
+        },
+        5: {
+          text: "Baked Apple Pie",
+          image:
+            "https://assets.epicurious.com/photos/64ac5e2a0581466b0dc4c8db/1:1/w_2580%2Cc_limit/20230705-EPICURIOUS-27836_RECIPE_VOG_final.jpg",
+        },
+        6: {
+          text: "Details for Card 6",
+          image:
+            "https://assets.epicurious.com/photos/63ea6ba855007bc33c26ba0b/1:1/w_2580%2Cc_limit/Shakshuka_RECIPE_020923_47096.jpg",
+        },
+        7: {
+          text: "Details for Card 7",
+          image:
+            "https://assets.epicurious.com/photos/58eff9404aa0a14da5b90f1d/1:1/w_2580%2Cc_limit/OUR-FAVORITE-CINNAMON-ROLLS-04122017.jpg",
+        },
+        8: {
+          text: "Details for Card 8",
+          image:
+            "https://assets.epicurious.com/photos/630386df4eaa77f49a537aa5/1:1/w_2580%2Cc_limit/Brown_Sugar_Bacon_RECIPE_081722_38635.jpg",
+        },
+        9: {
+          text: "Details for Card 9",
+          image:
+            "https://assets.epicurious.com/photos/64bb087638379779cdfada78/1:1/w_2580%2Cc_limit/20230705-EPICURIOUS-27945.jpg",
+        },
+        10: {
+          text: "Details for Card 10",
+          image:
+            "https://assets.epicurious.com/photos/5cb8c696cfb0e4498da549de/1:1/w_2580%2Cc_limit/SUNDAY-STASH-APRIL-Pancake-Mix-recipe-100419.jpg",
+        },
+        11: {
+          text: "Details for Card 11",
+          image:
+            "https://assets.epicurious.com/photos/62c4b089bfd689c61cf0ac8c/1:1/w_2580%2Cc_limit/Chilaquiles_RECIPE_062922_36571.jpg",
+        },
+        12: {
+          text: "Details for Card 12",
+          image:
+            "https://assets.epicurious.com/photos/631f4651b3bc412fb83806ae/1:1/w_2580%2Cc_limit/HashBrownCasserole_RECIPE_090721_2083.jpg",
+        },
+      };
+
+      const container = document.getElementById("cards-container");
+      for (let i = 1; i <= 12; i++) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const img = document.createElement("img");
+        img.src = cardDetails[i].image;
+        img.alt = `Card ${i} image`;
+        card.appendChild(img);
+
+        card.onclick = () => {
+          window.location.href = `details.html?id=${i}&details=${encodeURIComponent(
+            cardDetails[i].text
+          )}&image=${encodeURIComponent(cardDetails[i].image)}`;
+        };
+
+        container.appendChild(card);
+      }
+    </script>
+  </body>
+</html>
